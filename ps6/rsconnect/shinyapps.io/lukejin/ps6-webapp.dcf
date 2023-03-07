@@ -1,0 +1,13 @@
+name: ps6-webapp
+title: ps6-webapp
+username:
+account: lukejin
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8508090
+bundleId: 6928196
+url: https://lukejin.shinyapps.io/ps6-webapp/
+when: 1678233033.58075
+lastSyncTime: 1678233033.58077
+asMultiple: FALSE
+asStatic: FALSE
