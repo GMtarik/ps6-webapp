@@ -89,9 +89,14 @@ ui <- fluidPage(
                  sidebarPanel(
                    selectInput(
                      inputId = "month", label = "Select Month:",
-                     choices = unique(uah_data$month)
+                     choices = sort(unique(uah_data$month))
                    )
                  ),
+                 sliderInput(
+                   inputId = "num_rows", label = "Select Number of Rows:",
+                   min = 1, max = nrow(uah_data), value = 10
+                 )
+               ),
                  mainPanel(
                    dataTableOutput("chart2"),
                    verbatimTextOutput("text2"),
@@ -101,7 +106,6 @@ ui <- fluidPage(
       )
     )
   )
-)
 
 
 # Define server function
@@ -127,7 +131,8 @@ server <- function(input, output) {
   table_data <- reactive({
     uah_data %>%
       filter(month == input$month) %>%
-      select(region, temp)
+      select(region, temp) %>%
+      slice(1:input$num_rows)
   })
   
   output$chart2 <- renderDataTable({
